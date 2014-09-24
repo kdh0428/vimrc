@@ -1,37 +1,42 @@
 "vundle setting
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'L9'
-Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
-Bundle 'cmdalias.vim'
-Bundle 'EasyMotion'
-Bundle 'fugitive.vim'
-Bundle 'pyflakes.vim'
-Bundle 'vim-flake8'
-Bundle 'jslint.vim'
+" base
+Plugin 'gmarik/vundle'
+Plugin 'L9'
+Plugin 'pathogen.vim'
+Plugin 'cmdalias.vim'
 
-Bundle 'pathogen.vim'
+" Utilities
+Plugin 'The-NERD-tree'
+Plugin 'The-NERD-Commenter'
+Plugin 'fugitive.vim'
+Plugin 'ctrlp.vim'
+Plugin 'Gundo'
+Plugin 'Syntastic'
+Plugin 'AutoComplPop'
 
-Bundle 'python.vim'
-"Bundle 'JavaScript-syntax'
-"Bundle 'javascript.vim'
-Bundle 'go.vim'
-Bundle 'cpp.vim'
-Bundle 'c.vim'
-Bundle 'mako.vim'
-Bundle 'Jinja'
-Bundle 'Markdown'
+" Language
+Plugin 'c.vim'
+Plugin 'Jinja'
+Plugin 'Markdown'
+Plugin 'mattn/emmet-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-flake8'
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'kchmck/vim-coffee-script'
 
+" color
+" Plugin 'jellybeans.vim'
+
+call vundle#end()
 filetype plugin indent on
-
 " vundle setting ---
 
-"Default color scheme
 colorscheme ir_black
 syntax on
 
@@ -45,89 +50,130 @@ set modeline
 set encoding=utf-8 fileencodings=utf-8,cp949,ucs-bom,korea,iso-2022-kr
 set mouse=a
 
-" Tab setting
 au FileType cpp    setl ts=4 sw=4 sts=4
 au FileType yaml   setl ts=2 sw=2 sts=2
 au FileType html   setl ts=2 sw=2 sts=2
 au FileType javascript setl ts=2 sw=2 sts=2
+au FileType coffee setl ts=2 sw=2 sts=2
+au FileType jade setl ts=2 sw=2 sts=2
+au FileType jinja  setl ts=2 sw=2 sts=2
+au FileType htmldjango setl ts=2 sw=2 sts=2
 au FileType make   setl ts=4 sw=4 sts=4 noet
 
-au BufRead,BufNewFile *.go set filetype=go
-au FileType go setl ts=4 sw=4 sts=4
 
-"English spelling checker.
 "setlocal spell spelllang=en_us
 
-" search highlight
-set hlsearch
-hi Search  ctermbg=green ctermfg=red
-
-"GUI Vim configurations.
 if has("gui_running")
-  set imd
-  set guifont=NanumGothicCoding\ 14
-  colorscheme ir_black
-  set guioptions-=T
-  set guioptions-=m
-  highlight SpellBad guibg=red guifg=white
-  hi Search guibg=green guifg=red
+    set imd
+    set guifont=Inconsolata\ Bold\ 14
+
+    colorscheme ir_black
+
+    set guioptions-=T
+    set guioptions-=m
+    highlight SpellBad guibg=red guifg=white
+    hi Search guibg=gray guifg=blue
 endif
 
-"MacVim-specific configurations.
 if has("gui_macvim")
-  " I prefer NanumGothicCoding as a coding font in MacVim.
-  set guifont=NanumGothicCoding:h16.00
-  set transparency=0
-  set guioptions=egmrLt
+    set guifont=Inconsolata:h16.00
+    set guioptions=egmrLt
+
+    set vb
+    set eb
 endif
 
-""" columns > 80 highlight
-highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=red
-"match OverLength /\%81v.\+/
-autocmd BufNewFile,BufRead *.py match OverLength /\%81v.\+/
+set hlsearch
+hi Search  ctermbg=gray
+ctermfg=blue
 
-" plugins setting
+if exists('+colorcolumn')
+    set colorcolumn=80
+else
+    highlight OverLength
+    ctermbg=red
+    ctermfg=white
+    guifg=white guibg=red
+    match OverLength
+    /\%81v.\+/
+endif
+
 let $JS_CMD='node'
-let NERDTreeIgnore = ['\.pyc$', '\.class$']
-let g:gitgutter_enabled = 1
-runtime! bundle/cmdalias.vim/plugin/cmdalias.vim
-call CmdAlias('tn', 'tabnew')
-call CmdAlias('tc', 'tabclose')
-call CmdAlias('tree', 'NERDTree')
-call CmdAlias('log', 'Glog')
-call CmdAlias('status', 'Gstatus')
-call CmdAlias('diff', 'Gsdiff')
+let NERDTreeIgnore =
+['\.pyc$',
+'\.class$']
+let
+g:gitgutter_enabled
+= 1
 
-" shortcuts
-nnoremap <C-t> :tabnext<CR>
-nnoremap <leader><leader>c :let @/ = ""<CR>
-nnoremap <leader><leader>1 :colorscheme ir_black<CR>
-nnoremap <leader><leader>2 :colorscheme wombat<CR>
-nnoremap <leader><leader>3 :colorscheme codeschool<CR>
-nnoremap <leader><leader>4 :colorscheme mustang<CR>
-nnoremap <leader><leader>5 :colorscheme Tomorrow<CR>
-nnoremap <leader><leader>nt :NERDTree<CR>
-nnoremap <leader><leader>s :w<CR>
-nnoremap <leader><leader>x :x<CR>
-nnoremap <leader><leader>q :q<CR>
+runtime!
+bundle/cmdalias.vim/plugin/cmdalias.vim
 
-" Etc.
+set
+wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
+" MacOSX/Linux
+let
+g:ctrlp_custom_ignore
+=
+'\v[\/]\.(git|hg|svn)$'
+
+let
+g:syntastic_python_checkers=['flake8']
+let
+g:syntastic_check_on_open=1
+let
+g:syntastic_enable_signs=1
+
+let
+b:javascript_fold =
+0
+let mapleader=","
+nnoremap <leader>tt
+:tabnew<CR>
+nnoremap <leader>tw
+:tabnext<CR>
+nnoremap <leader>]
+:let @/ = ""<CR>
+nnoremap <leader>dd :NERDTree<CR>
+nnoremap <F5> :GundoToggle<CR>
+nnoremap <leader>s :w<CR>
+nnoremap <leader>x :x<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>w <ESC><C-w>w
+nnoremap <leader>p <ESC><C-w>p
+nnoremap <leader>a i
+nnoremap <leader>p :CtrlP<CR>
+vnoremap <C-Insert> "+y
+vnoremap <S-Insert> "+gP
+
+nnoremap <MiddleMouse> <Nop>
+nnoremap <2-MiddleMouse> <Nop>
+nnoremap <3-MiddleMouse> <Nop>
+nnoremap <4-MiddleMouse> <Nop>
+inoremap <MiddleMouse> <Nop>
+inoremap <2-MiddleMouse> <Nop>
+inoremap <3-MiddleMouse> <Nop>
+inoremap <4-MiddleMouse> <Nop>
+
 function! SearchDash()
-  let s:browser = "/usr/bin/open"
-  let s:searchString = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
-  let s:url = "\"dash://".s:searchString."\""
-  let s:cmd ="silent ! " . s:browser . " " . s:url
-  execute s:cmd
-  redraw!
+    let s:browser = "/usr/bin/open"
+    let s:searchString = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
+    let s:url = "\"dash://".s:searchString."\""
+    let s:cmd = "silent ! " . s:browser . " " . s:url
+    execute s:cmd
+    redraw!
 endfunction
 map <leader><leader>d :call SearchDash()<CR>
 
 function! SearchGoogle()
-  let s:browser = "/usr/bin/open"
-  let s:searchString = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
-  let s:url = "\"http://www.google.co.kr/search?q=".s:searchString."\""
-  let s:cmd ="silent ! " . s:browser . " " . s:url
-  execute s:cmd
-  redraw!
+    let s:browser = "/usr/bin/google-chrome"
+    let s:searchString = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
+    let s:url = "\"http://www.google.co.kr/search?q=".s:searchString."\""
+    let s:cmd = "silent ! " . s:browser . " " . s:url
+    execute s:cmd
+    redraw!
 endfunction
 map <leader><leader>g :call SearchGoogle()<CR>
+
+map <leader><leader>j :YcmCompleter GoToDefinition<CR>
+
