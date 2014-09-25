@@ -99,41 +99,23 @@ else
 endif
 
 let $JS_CMD='node'
-let NERDTreeIgnore =
-['\.pyc$',
-'\.class$']
-let
-g:gitgutter_enabled
-= 1
+let NERDTreeIgnore = ['\.pyc$','\.class$']
+let g:gitgutter_enabled = 1
 
-runtime!
-bundle/cmdalias.vim/plugin/cmdalias.vim
+runtime! bundle/cmdalias.vim/plugin/cmdalias.vim
 
-set
-wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
-" MacOSX/Linux
-let
-g:ctrlp_custom_ignore
-=
-'\v[\/]\.(git|hg|svn)$'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-let
-g:syntastic_python_checkers=['flake8']
-let
-g:syntastic_check_on_open=1
-let
-g:syntastic_enable_signs=1
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
 
-let
-b:javascript_fold =
-0
+let b:javascript_fold = 0
 let mapleader=","
-nnoremap <leader>tt
-:tabnew<CR>
-nnoremap <leader>tw
-:tabnext<CR>
-nnoremap <leader>]
-:let @/ = ""<CR>
+nnoremap <leader>tt :tabnew<CR>
+nnoremap <leader>tw :tabnext<CR>
+nnoremap <leader>] :let @/ = ""<CR>
 nnoremap <leader>dd :NERDTree<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <leader>s :w<CR>
