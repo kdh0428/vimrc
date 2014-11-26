@@ -31,11 +31,7 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
 
 " color
-<<<<<<< HEAD
-Plugin 'jellybeans.vim'
-=======
 " Plugin 'jellybeans.vim'
->>>>>>> 3da67d68a73d7525a47ae01cf9da177680018a88
 
 call vundle#end()
 filetype plugin indent on
@@ -88,44 +84,21 @@ if has("gui_macvim")
 endif
 
 set hlsearch
-<<<<<<< HEAD
 hi Search  ctermbg=gray ctermfg=blue
-=======
-hi Search  ctermbg=gray
-ctermfg=blue
->>>>>>> 3da67d68a73d7525a47ae01cf9da177680018a88
 
 if exists('+colorcolumn')
     set colorcolumn=80
 else
-<<<<<<< HEAD
-    highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=red
-    match OverLength /\%81v.\+/
-endif
-
-let $JS_CMD='node'
-let NERDTreeIgnore = ['\.pyc$', '\.class$']
-=======
-    highlight OverLength
-    ctermbg=red
-    ctermfg=white
-    guifg=white guibg=red
-    match OverLength
-    /\%81v.\+/
+    highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=red match OverLength /\%81v.\+/
 endif
 
 let $JS_CMD='node'
 let NERDTreeIgnore = ['\.pyc$','\.class$']
->>>>>>> 3da67d68a73d7525a47ae01cf9da177680018a88
 let g:gitgutter_enabled = 1
 
 runtime! bundle/cmdalias.vim/plugin/cmdalias.vim
 
-<<<<<<< HEAD
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc    " MacOSX/Linux
-=======
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
->>>>>>> 3da67d68a73d7525a47ae01cf9da177680018a88
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 let g:syntastic_python_checkers=['flake8']
@@ -169,11 +142,7 @@ endfunction
 map <leader><leader>d :call SearchDash()<CR>
 
 function! SearchGoogle()
-<<<<<<< HEAD
-    let s:browser = "/usr/bin/open"
-=======
     let s:browser = "/usr/bin/google-chrome"
->>>>>>> 3da67d68a73d7525a47ae01cf9da177680018a88
     let s:searchString = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
     let s:url = "\"http://www.google.co.kr/search?q=".s:searchString."\""
     let s:cmd = "silent ! " . s:browser . " " . s:url
@@ -183,7 +152,3 @@ endfunction
 map <leader><leader>g :call SearchGoogle()<CR>
 
 map <leader><leader>j :YcmCompleter GoToDefinition<CR>
-<<<<<<< HEAD
-=======
-
->>>>>>> 3da67d68a73d7525a47ae01cf9da177680018a88
