@@ -17,10 +17,11 @@ Plugin 'fugitive.vim'
 Plugin 'ctrlp.vim'
 Plugin 'Gundo'
 Plugin 'Syntastic'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'AutoComplPop'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Language
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'c.vim'
 Plugin 'Jinja'
 Plugin 'Markdown'
@@ -61,8 +62,8 @@ au FileType jinja  setl ts=2 sw=2 sts=2
 au FileType htmldjango setl ts=2 sw=2 sts=2
 au FileType make   setl ts=4 sw=4 sts=4 noet
 
-au BufRead,BufNewFile *.go set filetype=go
-au FileType go setl ts=4 sw=4 sts=4
+" au BufRead,BufNewFile *.go set filetype=go
+" au FileType go setl ts=4 sw=4 sts=4
 
 "setlocal spell spelllang=en_us
 
@@ -115,11 +116,14 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 0
 let g:ycm_goto_buffer_command = 'new-tab'
+let mapleader=","
+
 
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tw :tabnext<CR>
 nnoremap <leader>] :let @/ = ""<CR>
 nnoremap <leader>dd :NERDTree<CR>
+nnoremap <F5> :GundoToggle<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>q :q<CR>
