@@ -18,10 +18,8 @@ Plugin 'ctrlp.vim'
 Plugin 'Gundo'
 Plugin 'Syntastic'
 Plugin 'AutoComplPop'
-"Plugin 'Valloric/YouCompleteMe'
 
 " Language
-" Plugin 'fatih/vim-go'
 Plugin 'c.vim'
 Plugin 'Jinja'
 Plugin 'Markdown'
@@ -33,7 +31,7 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
 
 " color
-Plugin 'jellybeans.vim'
+" Plugin 'jellybeans.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -61,9 +59,6 @@ au FileType jade setl ts=2 sw=2 sts=2
 au FileType jinja  setl ts=2 sw=2 sts=2
 au FileType htmldjango setl ts=2 sw=2 sts=2
 au FileType make   setl ts=4 sw=4 sts=4 noet
-
-" au BufRead,BufNewFile *.go set filetype=go
-" au FileType go setl ts=4 sw=4 sts=4
 
 "setlocal spell spelllang=en_us
 
@@ -93,17 +88,16 @@ hi Search  ctermbg=gray ctermfg=blue
 if exists('+colorcolumn')
     set colorcolumn=80
 else
-    highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=red
-    match OverLength /\%81v.\+/
+    highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=red match OverLength /\%81v.\+/
 endif
 
 let $JS_CMD='node'
-let NERDTreeIgnore = ['\.pyc$', '\.class$']
+let NERDTreeIgnore = ['\.pyc$','\.class$']
 let g:gitgutter_enabled = 1
 
 runtime! bundle/cmdalias.vim/plugin/cmdalias.vim
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc    " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 let g:syntastic_python_checkers=['flake8']
@@ -111,14 +105,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
 let b:javascript_fold = 0
-
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 0
-let g:ycm_goto_buffer_command = 'new-tab'
 let mapleader=","
-
-
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tw :tabnext<CR>
 nnoremap <leader>] :let @/ = ""<CR>
@@ -154,7 +141,7 @@ endfunction
 map <leader><leader>d :call SearchDash()<CR>
 
 function! SearchGoogle()
-    let s:browser = "/usr/bin/open"
+    let s:browser = "/usr/bin/google-chrome"
     let s:searchString = getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
     let s:url = "\"http://www.google.co.kr/search?q=".s:searchString."\""
     let s:cmd = "silent ! " . s:browser . " " . s:url
