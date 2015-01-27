@@ -25,8 +25,6 @@ download_fonts:
 	rm -f NanumGothicCoding-2.0.zip;
 
 install_vundle:
-	git submodule init
-	git submodule update
 	vim +BundleInstall +qall
 
 etc:
