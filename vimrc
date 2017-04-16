@@ -1,43 +1,39 @@
-"vundle setting
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " base
-Plugin 'gmarik/vundle'
-Plugin 'L9'
-Plugin 'pathogen.vim'
-Plugin 'cmdalias.vim'
+Plug 'gmarik/vundle'
+Plug 'L9'
+Plug 'pathogen.vim'
+Plug 'cmdalias.vim'
 
 " Utilities
-Plugin 'The-NERD-tree'
-Plugin 'The-NERD-Commenter'
-Plugin 'fugitive.vim'
-Plugin 'ctrlp.vim'
-Plugin 'Gundo'
-Plugin 'Syntastic'
-Plugin 'AutoComplPop'
+Plug 'The-NERD-tree'
+Plug 'The-NERD-Commenter'
+Plug 'fugitive.vim'
+Plug 'ctrlp.vim'
+Plug 'Gundo'
+Plug 'Syntastic'
+Plug 'AutoComplPop'
 
 " Language
-Plugin 'c.vim'
-Plugin 'Jinja'
-Plugin 'Markdown'
-Plugin 'mattn/emmet-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vim-flake8'
-Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
+Plug 'c.vim'
+Plug 'Jinja'
+Plug 'Markdown'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-flake8'
+Plug 'groenewege/vim-less'
+Plug 'digitaltoad/vim-jade'
+Plug 'kchmck/vim-coffee-script'
 
 " color
-" Plugin 'jellybeans.vim'
+Plug 'jellybeans.vim'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 " vundle setting ---
 
-colorscheme ir_black
+colorscheme solarized 
 syntax on
 
 set nu
