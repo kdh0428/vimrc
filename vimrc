@@ -2,32 +2,27 @@ call plug#begin('~/.vim/plugged')
 
 " base
 Plug 'gmarik/vundle'
-Plug 'L9'
-Plug 'pathogen.vim'
-Plug 'cmdalias.vim'
+Plug 'https://github.com/eparreno/vim-l9.git'
+Plug 'https://github.com/tpope/vim-pathogen.git'
+Plug 'https://github.com/vim-scripts/cmdalias.vim.git'
 
 " Utilities
-Plug 'The-NERD-tree'
-Plug 'The-NERD-Commenter'
-Plug 'fugitive.vim'
-Plug 'ctrlp.vim'
-Plug 'Gundo'
-Plug 'Syntastic'
-Plug 'AutoComplPop'
+Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/scrooloose/nerdcommenter.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/sjl/gundo.vim.git'
+Plug 'https://github.com/vim-syntastic/syntastic.git'
+Plug 'https://github.com/vim-scripts/AutoComplPop.git'
 
 " Language
-Plug 'c.vim'
-Plug 'Jinja'
-Plug 'Markdown'
-Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'vim-flake8'
-Plug 'groenewege/vim-less'
-Plug 'digitaltoad/vim-jade'
-Plug 'kchmck/vim-coffee-script'
-
-" color
-Plug 'jellybeans.vim'
+Plug 'https://github.com/vim-scripts/c.vim.git'
+Plug 'https://github.com/lepture/vim-jinja.git'
+Plug 'https://github.com/plasticboy/vim-markdown.git'
+Plug 'https://github.com/mattn/emmet-vim.git'
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/nvie/vim-flake8.git'
+Plug 'https://github.com/groenewege/vim-less.git'
 
 call plug#end()
 filetype plugin indent on
